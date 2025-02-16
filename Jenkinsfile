@@ -1,25 +1,6 @@
 pipeline{
     agent any
     stages{
-       stage("A"){
-
-            steps{
-                
-                sshagent(credentials: ['ansible']){
-            sh """
-            
-              ssh -i \${SSH_KEY}  -o StrictHostKeyChecking=no -o ProxyCommand="ssh -i \${SSH_KEY}  -o StrictHostKeyChecking=no \${SSH_USER}@\${BASTION_HOST} -W %h:%p" \${SSH_USER}@\${BASTION_HOST} "
-              
-              ls -la
-              
-              "
-
-              """
-                }
-            }
-
-        }
-        
 
        stage("init") {
             agent {
