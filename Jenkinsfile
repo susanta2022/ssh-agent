@@ -5,7 +5,7 @@ pipeline{
        stage("withdockercontainer") {
             steps {
                 echo "Using Docker image: python:3.11-buster"
-                script {
+                
                     withDockerContainer(
 
                         image: "python:3.11-buster",
@@ -22,7 +22,7 @@ pipeline{
                                                                   '''
                         )
                     }
-                }
+              
             }
         }
     }
