@@ -2,31 +2,19 @@ pipeline{
     agent any
     stages{
         stage("A"){
+
             steps{
-                echo "========executing A========"
-            }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
+                
+                sshagent(credentials: ['ansible']){
+                            sh '''
+
+                                ssh -o StrictHostKeyChecking=no node3@192.168.0.109 "ls -la" 
+
+                            '''
                 }
             }
+
         }
     }
-    post{
-        always{
-            echo "========always========"
-        }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
-        }
-    }
+
 }
