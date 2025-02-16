@@ -2,22 +2,27 @@ pipeline{
     agent any
     stages{
 
-       stage("init") {
-            agent {
-                docker {
-                    image 'maven:3.9.3-eclipse-temurin-17'
-                    args '-u 0 -v /root/.m2:/root/.m2 -w /root/.m2'
-                    //       reuseNode true
-                }
-            }
+       stage("withdockercontainer") {
             steps {
-                sh 'mvn dependency:get -Dartifact=org.springframework:spring-instrument:3.2.4.RELEASE'
-                sh (
-                    label: 'Clean and rebuild application distribution files',
-                    script: '''
-                                                                                    mkdir -p /home/ubuntu/susanta
-                                                                       '''
-                )
+                echo "Using Docker image: python:3.11-buster"
+                script {
+                    withDockerContainer(
+
+                        image: "python:3.11-buster",
+                        args: '--user root -u 0 -v ${WORKSPACE}:/usr/src/app',
+
+                    ) {
+                        sh(
+                            label: '<<=======Copy source files into src-volume========>>',
+
+                            script: '''     cd  /usr/src/app
+                                            python -m pip install --no-cache -U -r requirements.txt
+                                            python test.py
+
+                                                                  '''
+                        )
+                    }
+                }
             }
         }
     }
