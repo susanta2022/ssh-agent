@@ -9,7 +9,7 @@ pipeline{
                     withDockerContainer(
 
                         image: "python:3.11-buster",
-              //           args: '--user root -u 0 -v ${WORKSPACE}:/usr/src/app',
+                        args: '--user root -u 0 ',
 
                     ) {
                         sh(
