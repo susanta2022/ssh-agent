@@ -20,7 +20,7 @@ pipeline{
 
                     script: '''
 
-                        python -m pip install --no-cache -U -r requirements.txt ,
+                        python -m pip install --no-cache -U -r requirements.txt 
                         python test.py
 
 
