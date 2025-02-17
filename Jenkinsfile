@@ -34,7 +34,7 @@ pipeline{
                     args: '--user root -u 0',
                 ){
                     sh(
-                        label: '=============='
+                        label: '==============',
                         script: '''
                                 python -m pip install --no-cache -U -r requirements.txt
                                 python test.py
