@@ -3,7 +3,7 @@ pipeline{
     stages{
 
        stage("withdockercontainer") {
-        
+
             // steps {
             //     echo "Using Docker image: python:3.11-buster"
                 
@@ -30,8 +30,8 @@ pipeline{
 
             steps{
                 withDockerContainer(
-                    image: "python3.12-alpine"
-                    args: '--user root -u 0'
+                    image: "python3.12-alpine",
+                    args: '--user root -u 0',
                 ){
                     sh(
                         label: '=============='
