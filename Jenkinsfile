@@ -32,7 +32,7 @@ pipeline{
             steps{
                 withCredentials([usernamePassword(credentialsId:'dockercred' , usernameVariable: 'dockeruser' , passwordVariable: 'dockerpassword')])
                 {
-                    sh "docker login -u ${env.dockeruser} -p ${env.dockerpassword}"
+                    sh "docker login -u ${env.dockeruser} -p ${env.dockerpassword}",
                     sh "docker logout"
                 }
             }
