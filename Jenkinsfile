@@ -30,10 +30,8 @@ pipeline{
         stage('deploy'){
 
             steps{
-                withCredentials([usernamePassword(credentialsId:'dockercred' , usernameVariable: 'dockeruser' , passwordVariable: 'dockerpassword')])
-                {
+                withCredentials([usernamePassword(credentialsId: 'dockercred', usernameVariable:'dockeruser' , passwordVariable:'dockerpassword')]){
                     sh "docker login -u ${env.dockeruser} -p ${env.dockerpassword}"
-                    
                     sh "docker logout"
                 }
             }
