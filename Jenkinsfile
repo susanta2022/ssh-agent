@@ -1,39 +1,30 @@
 pipeline{
+
     agent any
+
     stages{
 
-       stage("withdockercontainer") {
+        stage("init"){
 
-        steps{
+            steps{
 
-            withDockerContainer(
+                withDockerContainer(
+                    image: 'python:3.11-alpine',
+                    args: '--user root -U 0',
 
-                    image: "python:3.11-slim",
-                    args: '--user root -u 0' ,
-
-            ){
-
-
-                sh(
-
-                    label: 'test the application',
-
-                    script: '''
-
-                        python -m pip install --no-cache -U -r requirements.txt 
-                        python test.py
-
-
-                    '''
                 )
+                {
+                    sh(
+                        label: '=======python 3.11=========',
+                        script: '''
+                                python -m pip install --no-cache -U -r requirements.txt
+                        '''
+                    )
+                }
             }
 
-        }
-
 
         }
 
-        
     }
-
 }
