@@ -10,7 +10,11 @@ pipeline{
 
         stage("init"){
 
+
+
             steps{
+
+                echo '==========${params.awsAccountId}============'
 
                 withDockerContainer(
                     image: 'python:3.11-alpine',
