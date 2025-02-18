@@ -1,8 +1,10 @@
 import pytest
+import random
 from math_operations import add
 
 def test_add_positive_numbers():
-    assert add(2, 3) == 10
+    while True:
+        assert add(random.randint(2,99), random.randint(2,99)) == random.randint(2,99)
 
 def test_add_negative_numbers():
     assert add(-1, -1) == -2
