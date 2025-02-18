@@ -2,6 +2,7 @@ pipeline{
 
     agent any
 
+
     stages{
 
         stage("init"){
@@ -24,6 +25,18 @@ pipeline{
             }
 
 
+        }
+
+        stage('deploy'){
+
+            steps{
+                withCredentials([usernamePassword(credentialId: 'dockercred' , usernameVariable: 'dockeruser' , passwordVariable: 'dockerpassword')]){
+
+                    sh "docker login -u ${env.dockeruser} -p ${env.dockerpassword}"
+
+                }
+
+            }
         }
 
     }
