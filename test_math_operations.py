@@ -1,9 +1,11 @@
 import pytest
 import random
 from math_operations import add
+import time
 
 def test_add_positive_numbers():
     while True:
+        time.sleep(.5)
         assert add(random.randint(2,99), random.randint(2,99)) == random.randint(2,99)
 
 def test_add_negative_numbers():
