@@ -2,6 +2,9 @@ pipeline{
 
     agent any
 
+    parameters{
+        string(name: 'awsAccountId' , description: 'aws account id description')
+    }
 
     stages{
 
