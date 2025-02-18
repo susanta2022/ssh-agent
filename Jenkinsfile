@@ -54,7 +54,7 @@ pipeline{
 
                 sshagent(credentials: ['sshuser']){
                     sh(
-                        labels: '=======ssh connection========',
+                        label: '=======ssh connection========',
                         script: '''
                             ssh -o StrictHostKeyChecking=no ubuntu@192.168.29.40 
                             "ls -la"
