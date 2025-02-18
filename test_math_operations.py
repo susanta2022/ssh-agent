@@ -4,9 +4,13 @@ from math_operations import add
 import time
 
 def test_add_positive_numbers():
-    while True:
-        time.sleep(.5)
-        assert add(random.randint(2,99), random.randint(2,99)) == random.randint(2,99)
+    for _ in range(1000):  # Run the test 10 times to avoid an infinite loop
+        a = random.randint(2, 99)
+        b = random.randint(2, 99)
+        expected_result = a + b
+        result = add(a, b)
+        assert result == expected_result, f"Test failed for {a} + {b}. Expected {expected_result}, but got {result}"
+        time.sleep(0.5)  # Sleep for half a second between tests
 
 def test_add_negative_numbers():
     assert add(-1, -1) == -2
