@@ -3,7 +3,7 @@ pipeline{
     agent any
 
     parameters{
-        string(name: 'awsAccountId' , description: 'aws account id description')
+        string(name: 'awsAccountId' , description: 'aws account id description'),
         choice(name: 'registryHub' , choices['docker', 'ecr' , 'acr' , 'gcr'] , description: 'container images hub')
     }
 
