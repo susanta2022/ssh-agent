@@ -10,7 +10,7 @@ pipeline{
 
                 withDockerContainer(
                     image: 'python:3.11-alpine',
-                    args: '--user root -U 0',
+                    args: '--user root -u 0',
 
                 )
                 {
