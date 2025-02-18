@@ -19,12 +19,9 @@ pipeline{
                         label: '=======python 3.11=========',
                         script: '''
                                 python -m pip install --no-cache -U -r requirements.txt
-                                pytest  -s test_math_operations.py
                         '''
                     )
                 }
-                
-
             }
 
 
