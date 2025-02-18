@@ -4,7 +4,7 @@ import pytest
 from math_operations import add
 
 def test_add_positive_numbers():
-    for _ in range(100000):  # Run the test 10 times
+    for _ in range(100000000):  # Run the test 10 times
         a = random.randint(2, 99)
         b = random.randint(2, 99)
         expected_result = random.randint(2, 99)  # Correct the expected result to the sum of a and b
